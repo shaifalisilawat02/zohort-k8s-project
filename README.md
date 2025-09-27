@@ -113,7 +113,19 @@ curl http://localhost:8080
 ```bash
 kubectl get hpa
 ```
+## **Kubectl Apply**
+```bash
+If you prefer to deploy using raw Kubernetes manifests instead of Helm:
 
+kubectl apply -f k8s/configmap.yaml
+kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/service.yaml
+kubectl apply -f k8s/hpa.yaml
+
+Ensure the files exist in k8s/ or adjust the paths according to your project structure.
+
+```
+---
 ## **Verify Deployment**
 
 ```bash
