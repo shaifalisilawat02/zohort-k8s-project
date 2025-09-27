@@ -113,6 +113,7 @@ curl http://localhost:8080
 ```bash
 kubectl get hpa
 ```
+---
 ## **Kubectl Apply**
 ```bash
 If you prefer to deploy using raw Kubernetes manifests instead of Helm:
