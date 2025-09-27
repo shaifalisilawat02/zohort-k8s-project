@@ -13,7 +13,6 @@ This repository contains a **Helm chart** to deploy a stateless web application 
 - [Usage](#usage)  
 - [Verify Deployment](#verify-deployment)  
 - [Best Practices](#best-practices)  
-- [License](#license)  
 
 ---
 
@@ -23,9 +22,6 @@ This repository contains a **Helm chart** to deploy a stateless web application 
 - Configurable **environment variables** via Helm values  
 - **ClusterIP Service** to expose the app internally  
 - **Horizontal Pod Autoscaler (HPA)** scaling between 3–10 pods based on CPU > 70%  
-- Configurable **ServiceAccount** for RBAC  
-- Optional **Ingress** support  
-- Enterprise-ready Helm templates with environment overrides  
 
 ---
 
@@ -42,14 +38,13 @@ This repository contains a **Helm chart** to deploy a stateless web application 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/<username>/stateless-webapp-k8s.git
-cd stateless-webapp
+git clone https://github.com/shaifalisilawat02/zohort-k8s-project.git
 ```
 
 2. Install the Helm chart:
 
 ```bash
-helm install webapp ./stateless-webapp
+helm install webapp ./zohort-k8s-project
 ```
 
 3. (Optional) Uninstall:
@@ -93,25 +88,12 @@ hpa:
   maxReplicas: 10
   targetCPUUtilizationPercentage: 70
 
-serviceAccount:
-  create: true
-  name: ""
-
-ingress:
-  enabled: false
-  annotations: {}
-  hosts:
-    - host: chart-example.local
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls: []
 ```
 
 You can override these values with a custom file:
 
 ```bash
-helm install webapp ./stateless-webapp -f values-prod.yaml
+helm install webapp ./zohort-k8s-project -f values-prod.yaml
 ```
 
 ---
@@ -132,12 +114,6 @@ curl http://localhost:8080
 kubectl get hpa
 ```
 
-- Optional Ingress:
-
-Enable in `values.yaml` or with `--set ingress.enabled=true` and configure hosts.
-
----
-
 ## **Verify Deployment**
 
 ```bash
@@ -156,10 +132,4 @@ kubectl describe deployment webapp
 - Use **ConfigMaps** for environment variables, avoid hardcoding  
 - Follow **Helm best practices**: values.yaml overrides, environment-specific files  
 - Consistent **labels** for Deployment, Service, HPA  
-
----
-
-## **License**
-
-MIT License
 
